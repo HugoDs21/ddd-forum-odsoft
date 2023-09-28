@@ -1,3 +1,11 @@
 plugins {
   id "com.github.node-gradle.node" version "7.0.0"
 }
+
+task npmBuildWindows(type: Exec) {
+  commandLine 'npm.cmd', 'run', 'build'
+}
+
+task npmBuildLinux(type: Exec) {
+  commandLine 'npm', 'run', 'build'
+}
