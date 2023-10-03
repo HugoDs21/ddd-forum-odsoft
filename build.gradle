@@ -2,10 +2,19 @@ plugins {
   id "com.github.node-gradle.node" version "7.0.0"
 }
 
-task npmBuildWindows(type: Exec) {
-  commandLine 'npm.cmd', 'run', 'build'
+task build2(type: Exec) {
+  commandLine 'npm', 'run', 'build'
 }
 
-task npmBuildLinux(type: Exec) {
-  commandLine 'npm', 'run', 'build'
+task installNpm(type: Exec) {
+  commandLine 'npm', 'install'
+}
+
+task build(dependsOn: 'installNpm') {
+  doLast {
+    exec {
+        commandLine 'npx', 'rimraf', './dist', '&&', 'tsc'
+    }
+    println 'Build Done!'
+  }
 }
