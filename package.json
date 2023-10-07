@@ -28,8 +28,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build",
-      "pre-push": "npm run build"
+      "pre-commit": "npm install",
+      "pre-push": "npm install"
     }
   },
   "repository": {
@@ -92,7 +92,8 @@
     "concurrently": "^5.0.0",
     "dotenv-cli": "^5.1.0",
     "husky": "^4.2.3",
-    "jest-html-reporter": "^3.0.0"
+    "jest-html-reporter": "^3.0.0",
+    "jsdoc": "^4.0.2"
   },
   "jest": {
     "testEnvironment": "node",
