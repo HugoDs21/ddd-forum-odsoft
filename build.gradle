@@ -18,3 +18,11 @@ task build(dependsOn: 'installNpm') {
     println 'Build Done!'
   }
 }
+
+task docsGeneration(type: Exec) {
+  //TODO add docs generation
+}
+
+task pumlGeneration(type: Exec) {
+  commandLine 'sh', 'bin/generate-plantuml-diagrams.sh'
+}
