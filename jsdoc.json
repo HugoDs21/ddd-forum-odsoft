@@ -1,10 +1,20 @@
 {
     "source": {
-        "include": ["./src"],
+        "include": ["./dist"],
         "exclude": ["node_modules"]
     },
     "opts": {
         "recurse": true,
-        "destination": "./docs/jsdoc"
+        "destination": "./docs/jsdoc",
+        "readme": "./README.md"
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc", "closure"]
+    },
+    "templates" : {
+      "cleverLinks": false,
+      "monospaceLinks": false
     }
 }
