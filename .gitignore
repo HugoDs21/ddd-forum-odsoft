@@ -8,4 +8,6 @@ npm-debug.log
 /dist
 /coverage
 report.html
- 
+/docs/tsdoc
+.gradle
+test-report.html
