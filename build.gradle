@@ -20,9 +20,21 @@ task build(dependsOn: 'installNpm') {
 }
 
 task docsGeneration(type: Exec) {
-  //TODO add docs generation
+  commandLine 'jsdoc', '-c', 'jsdoc.json'
 }
 
 task pumlGeneration(type: Exec) {
   commandLine 'sh', 'bin/generate-plantuml-diagrams.sh'
+}
+
+task startDev(type: Exec) {
+  commandLine 'npm', 'run', 'start:dev'
+}
+
+task runAPITests(dependsOn: 'startDev') {
+  doLast {
+    exec {
+        commandLine 'npm', 'run', 'test:api'
+    }
+  }
 }
