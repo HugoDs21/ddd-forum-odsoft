@@ -27,14 +27,18 @@ task pumlGeneration(type: Exec) {
   commandLine 'sh', 'bin/generate-plantuml-diagrams.sh'
 }
 
-task startDev(type: Exec) {
-  commandLine 'npm', 'run', 'start:dev'
+task runAPITestsWithCoverage(type: Exec) {
+  commandLine 'npm', 'run', 'testApiWithCoverage'
 }
 
-task runAPITests(dependsOn: 'startDev') {
-  doLast {
-    exec {
-        commandLine 'npm', 'run', 'test:api'
-    }
-  }
+task runApiTests(type: Exec) {
+  commandLine 'npm', 'run', 'testApi'
+}
+
+task runUnitTests(type: Exec) {
+  commandLine 'npm', 'run', 'testUnit'
+}
+
+task runUnitTestsWithCoverage(type: Exec) {
+  commandLine 'npm', 'run', 'testUnitWithCoverage'
 }

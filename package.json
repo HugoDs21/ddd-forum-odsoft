@@ -21,11 +21,11 @@
     "start:both": "concurrently --kill-others-on-fail \"npm run start:dev\" \"npm run  start:public\"",
     "prestart": "npm run migrate:prod",
     "start": "node dist/index",
-    "test": "jest",
+    "testUnit": "jest",
     "test:dev": "jest --watchAll",
-    "testWithCoverage": "jest --coverage --coverageReporters=\"text\" --coverageReporters=\"html\" --coverageReporters=\"json\"",
-    "test:api": "npm run db:delete:dev && npm run db:create:dev && npm run migrate:dev && jest --coverage --coverageReporters=\"html\" --runInBand --testPathPattern=api",
-    "docs": "jsdoc -c jsdoc.json"
+    "testUnitWithCoverage": "jest --coverage --coverageReporters=\"text\" --coverageReporters=\"html\" --coverageReporters=\"json\"",
+    "testApi": "npm run db:delete:dev && npm run db:create:dev && npm run migrate:dev && jest --coverage --coverageReporters=\"html\" --runInBand --testPathPattern=api",
+    "testApiWithCoverage": "npm run db:delete:dev && npm run db:create:dev && npm run migrate:dev && jest --coverage --coverageReporters=\"html\" --runInBand --testPathPattern=api"
   },
   "husky": {
     "hooks": {
