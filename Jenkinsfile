@@ -50,6 +50,12 @@ pipeline {
         //         }
         //     }
         // }
+
+        stage('Run tests') {
+            steps {
+                sh 'npm run testUnit'
+            }
+        }
     }
     post {
         always {
