@@ -19,7 +19,7 @@ RUN npm i
 
 RUN cd public/app && npm i
 
-COPY runTests/entrypoint.sh .
+COPY ./runTests/entrypoint.sh .
 
 RUN chmod +x entrypoint.sh
 
