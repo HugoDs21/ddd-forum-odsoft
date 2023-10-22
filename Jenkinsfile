@@ -53,6 +53,7 @@ pipeline {
 
         stage('Run tests') {
             steps {
+                sleep(time: 2, unit: 'MINUTES')
                 sh 'npm run testUnit'
             }
         }
