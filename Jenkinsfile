@@ -13,47 +13,47 @@ pipeline {
             }
         }
 
-        stage('Prepare environment') {
-            steps {
-                sh 'cp .env.template .env'
-            }
-        }
+        // stage('Prepare environment') {
+        //     steps {
+        //         sh 'cp .env.template .env'
+        //     }
+        // }
 
         stage('Start containers') {
             steps {
-                sh 'docker compose up -d --wait'
+                sh 'docker compose -f runTests/docker-compose.yml up -d --wait'
                 sh 'docker compose ps'
             }
         }
 
-        stage('Create database') {
-            steps {
-                sh 'npm run setup:dev'
-            }
-        }
+        // stage('Create database') {
+        //     steps {
+        //         sh 'npm run setup:dev'
+        //     }
+        // }
 
-        stage('Start backend and run tests') {
-            parallel {
-                stage('Start backend') {
-                    steps {
-                        timeout(time: 5, unit: 'MINUTES') {
-                            sh 'npm run start:dev'
-                        }
-                    }
-                }
-                stage('Run tests') {
-                    steps {
-                        retry(5) {
-                            sh 'npm run testUnit'
-                        }
-                    }
-                }
-            }
-        }
+        // stage('Start backend and run tests') {
+        //     parallel {
+        //         stage('Start backend') {
+        //             steps {
+        //                 timeout(time: 5, unit: 'MINUTES') {
+        //                     sh 'npm run start:dev'
+        //                 }
+        //             }
+        //         }
+        //         stage('Run tests') {
+        //             steps {
+        //                 echo 'Waiting for backend to start...'
+        //                 sleep(time: 1, unit: 'MINUTES')
+        //                 sh 'npm run testUnit'
+        //             }
+        //         }
+        //     }
+        // }
     }
     post {
         always {
-            sh 'docker compose down --remove-orphans -v'
+            sh 'docker compose -f runTests/docker-compose.yml down --remove-orphans -v'
             sh 'docker compose ps'
         }
     }
