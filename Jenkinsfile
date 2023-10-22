@@ -12,6 +12,13 @@ pipeline {
                 '''
             }
         }
+
+        stage('Prepare environment') {
+            steps {
+                sh 'cp .env.template .env'
+            }
+        }
+
         stage('Start containers') {
             steps {
                 sh 'docker compose up -d --wait'
@@ -21,8 +28,7 @@ pipeline {
 
         stage('Create database') {
             steps {
-                sh 'npm run db:create:dev'
-                sh 'npm run migrate:dev'
+                sh 'npm run setup:dev'
             }
         }
 
