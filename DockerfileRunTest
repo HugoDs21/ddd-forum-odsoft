@@ -19,6 +19,6 @@ RUN npm i
 
 RUN cd public/app && npm i
 
-RUN chmod +x entrypoint.sh
+RUN chmod +x entrypointRunTest.sh
 
 CMD ["./entrypointRunTest.sh"]
