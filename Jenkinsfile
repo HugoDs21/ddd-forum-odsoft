@@ -21,7 +21,7 @@ pipeline {
 
         stage('Start containers') {
             steps {
-                sh 'docker compose -f runTests/docker-compose.yml up -d --wait'
+                sh 'docker compose -f docker-composeRunTest.yml up -d --wait'
                 sh 'docker compose ps'
             }
         }
@@ -53,7 +53,7 @@ pipeline {
     }
     post {
         always {
-            sh 'docker compose -f runTests/docker-compose.yml down --remove-orphans -v'
+            sh 'docker compose -f docker-composeRunTest.yml down --remove-orphans -v'
             sh 'docker compose ps'
         }
     }
