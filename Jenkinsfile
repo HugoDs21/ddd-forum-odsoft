@@ -9,6 +9,7 @@ pipeline {
                     docker version
                     docker compose version
                     node -v
+                    gradle -v
                 '''
             }
         }
@@ -18,6 +19,12 @@ pipeline {
         //         sh 'cp .env.template .env'
         //     }
         // }
+
+        stage('Build') {
+            steps {
+                sh 'gradle build'
+            }
+        }
 
         stage('Start containers') {
             steps {
@@ -53,7 +60,8 @@ pipeline {
 
         stage('Run tests') {
             steps {
-                sleep(time: 2, unit: 'MINUTES')
+                echo 'Waiting for backend to start...'
+                sleep(time: 1, unit: 'MINUTES')
                 sh 'npm run testUnit'
             }
         }
@@ -62,6 +70,11 @@ pipeline {
         always {
             sh 'docker compose -f docker-composeRunTest.yml down --remove-orphans -v'
             sh 'docker compose ps'
+        }
+
+        success {
+            echo 'Tests passed'
+            // junit 'test-report.html'
         }
     }
 }
