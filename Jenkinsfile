@@ -20,7 +20,7 @@ pipeline {
 
         stage('Prepare environment') {
              steps {
-                 sh 'cp .env.template .env'
+                 sh 'cp .env.docker-compose .env'
              }
         }
 
