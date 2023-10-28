@@ -4,6 +4,7 @@ pipeline {
     agent any
     tools {
         nodejs 'Node 12.22.12'
+        gradle 'Gradle 8.4'
     }
     stages {
         stage('Verify installations') {
