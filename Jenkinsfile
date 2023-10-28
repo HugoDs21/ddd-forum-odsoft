@@ -8,7 +8,7 @@ pipeline {
                 sh '''
                     docker version
                     docker compose version
-                    node -v
+                    nvm ls
                     gradle -v
                 '''
             }
