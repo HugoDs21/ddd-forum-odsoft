@@ -2,6 +2,9 @@
 
 pipeline {
     agent any
+    tools {
+        nodejs 'Node 12.22.12'
+    }
     stages {
         stage('Verify installations') {
             steps {
