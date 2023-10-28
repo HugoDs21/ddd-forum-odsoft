@@ -65,7 +65,7 @@ pipeline {
         stage('Run tests') {
             steps {
                 echo 'Waiting for backend to start...'
-                sleep(time: 1, unit: 'MINUTES')
+                sleep(time: 30, unit: 'SECONDS')
                 sh 'npm run testUnit'
             }
         }
