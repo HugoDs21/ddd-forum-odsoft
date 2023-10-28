@@ -18,11 +18,11 @@ pipeline {
             }
         }
 
-        // stage('Prepare environment') {
-        //     steps {
-        //         sh 'cp .env.template .env'
-        //     }
-        // }
+        stage('Prepare environment') {
+             steps {
+                 sh 'cp .env.template .env'
+             }
+        }
 
         stage('Build') {
             steps {
