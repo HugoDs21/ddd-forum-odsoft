@@ -78,6 +78,13 @@ pipeline {
 
         success {
             echo 'Tests passed'
+            publishHTML (target : [allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: '.',
+                        reportFiles: 'test-report.html',
+                        reportName: 'Test Report',
+                        reportTitles: 'The Report'])
             // junit 'test-report.html'
         }
     }
